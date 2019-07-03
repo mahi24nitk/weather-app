@@ -1,0 +1,64 @@
+<p>weather works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"><h3 class="text-center">Search for Weather:</h3>
+
+    	<form [formGroup]="searchWeather" (ngSubmit)='send(searchWeather.value)'>
+    <div class="form-group">
+    	<input type="text" class="form-control" name="" placeholder="Please input a Location" formControlName="location" >
+
+
+
+
+    <!--   <select
+        class="form-control"
+        type="text"
+        id="weatherLocation"
+        aria-describedby="weatherLocation"
+        placeholder="Please input a Location"
+        formControlName="location"
+      >
+      <option>indore</option>
+      <option>bhopal</option>
+  </select> -->
+     </div>
+     <div class="text-center"> 
+      <button type="submit" class="btn btn-primary btn-md">
+        Search for the weather</button>
+     </div>
+   </form> 
+</div>
+  </div>
+  
+  <div class="row">
+  	 <div class="col-md-12"><h3 class="text-center">Weather Details:</h3><h4>{{weatherData.name}} </h4>
+    	<table class="table table-hover">
+    <thead>
+      <tr>
+      	<th>country</th>
+        <th>humidity</th>
+        <th>pressure</th>
+        <th>temp_max</th>
+        <th>temp_min</th>
+        <th>cloud</th>
+        <th>wind</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="weatherData">
+      	<td>{{weatherData.sys.country}}</td>
+        <td>{{weatherData.main.humidity}}%</td>
+        <td>{{weatherData.main.pressure}}</td>
+        <td>{{weatherData.main.temp_max}}<sup>.c</sup></td>
+        <td>{{weatherData.main.temp_min}}<sup>.c</sup></td>
+        <td>{{weatherData.weather[0].description}}</td>
+        <td>{{weatherData.wind.speed}}km/h</td>
+      </tr>
+    </tbody>
+  </table>
+
+    </div>
+  </div>
+</div>
